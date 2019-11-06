@@ -23,5 +23,6 @@ class Field @JvmOverloads constructor(context: Context, attrs: AttributeSet? = n
 // gradle is smart enough to attach it to a correct auto-generated databinding class
 @BindingAdapter("fieldData")
 fun Field.bindFieldData(data: FieldLiveDataWrapper?) {
+    // link the fieldData in field.xml to the formViewModel's email liveData
     data?.let { this.binding.fieldData = it.email }
 }
