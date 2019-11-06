@@ -18,8 +18,9 @@ class Field @JvmOverloads constructor(context: Context, attrs: AttributeSet? = n
 }
 
 // define a BindingAdapter so that you can use app:fieldData="@{ viewModel.email }" in layouts
-// that include this custom layout class
-// Also, you can put the @BindingAdapter part
+// that include this custom layout class.
+// Also, you can put this part of code in a separate file anywhere in your project,
+// gradle is smart enough to attach it to a correct auto-generated databinding class
 @BindingAdapter("fieldData")
 fun Field.bindFieldData(data: FieldLiveDataWrapper?) {
     data?.let { this.binding.fieldData = it.email }
