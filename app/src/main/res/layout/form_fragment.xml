@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="cz.phamtdat.bindingadaptersample.ui.form.FormViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="32dp">
+
+        <!--
+            The way databinding works, viewModel.email will be automatically unwrapped,
+            so you won't get the LiveData in your Field class, only the String value.
+            Better pass the viewModel itself, or if you do not want to expose the whole
+            viewModel to the Field class, create a wrapper class that wraps only the
+            LiveData that are relevant for the Field class
+         -->
+        <cz.phamtdat.bindingadaptersample.ui.form.Field
+            android:id="@+id/emailField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            app:fieldData="@{ viewModel.fieldLiveDataWrapper }" />
+
+    </LinearLayout>
+</layout>
